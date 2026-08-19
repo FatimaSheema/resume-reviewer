@@ -112,7 +112,8 @@
         <p class="subtitle">Paste your resume and get instant expert feedback</p>
 
         <div class="card">
-            <label>Paste your resume text below:</label>
+            <label>Upload your resume (PDF) or paste text below:</label>
+                <input type="file" id="pdfInput" accept=".pdf" style="margin-bottom: 12px; width: 100%;">
             <textarea id="resumeInput" placeholder="Paste your full resume here..."></textarea>
             <button onclick="reviewResume()" id="btn">🔍 Review My Resume</button>
         </div>
@@ -126,6 +127,37 @@
     </div>
 
     <script>
+        document.getElementById('pdfInput').addEventListener('change', async function(e) {
+    const file = e.target.files[0];
+    if (!file) return;
+
+    const formData = new FormData();
+    formData.append('file', file);
+
+    const loading = document.getElementById('loading');
+    loading.style.display = 'block';
+    loading.textContent = '📄 Extracting text from PDF...';
+
+    try {
+        const res = await fetch('http://localhost:5001/extract-pdf', {
+            method: 'POST',
+            body: formData
+        });
+
+        const data = await res.json();
+
+        if (data.error) {
+            alert('Error reading PDF: ' + data.error);
+        } else {
+            document.getElementById('resumeInput').value = data.text;
+        }
+    } catch (err) {
+        alert('Error uploading PDF!');
+    }
+
+    loading.style.display = 'none';
+    loading.textContent = '⏳ Analyzing your resume, please wait...';
+    });
         async function reviewResume() {
             const resume = document.getElementById('resumeInput').value.trim();
             if (!resume) {
