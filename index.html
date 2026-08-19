@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Resume Reviewer</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #e8e4d9;
+            min-height: 100vh;
+            padding: 40px 20px;
+            color: #3a3a3a;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 28px;
+            margin-bottom: 8px;
+            color: #7d9b76;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #888;
+            margin-bottom: 30px;
+            font-size: 14px;
+        }
+
+        .card {
+            background: #f5f2eb;
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #666;
+            font-size: 14px;
+        }
+
+        textarea {
+            width: 100%;
+            height: 200px;
+            background: #e8e4d9;
+            border: 1px solid #c4b99a;
+            border-radius: 10px;
+            padding: 14px;
+            color: #3a3a3a;
+            font-size: 14px;
+            resize: vertical;
+            outline: none;
+            font-family: Arial, sans-serif;
+        }
+
+        textarea:focus { border-color: #7d9b76; }
+
+        button {
+            width: 100%;
+            padding: 14px;
+            background: #7d9b76;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 16px;
+        }
+
+        button:hover { background: #6a8a63; }
+        button:disabled { background: #aaa; cursor: not-allowed; }
+
+        .feedback-box {
+            background: #f5f2eb;
+            border-radius: 16px;
+            padding: 24px;
+            display: none;
+            line-height: 1.8;
+            font-size: 14px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+        }
+
+        .feedback-box h2 {
+            color: #7d9b76;
+            margin-bottom: 16px;
+            font-size: 18px;
+        }
+
+        .loading {
+            text-align: center;
+            color: #7d9b76;
+            padding: 20px;
+            display: none;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📄 AI Resume Reviewer</h1>
+        <p class="subtitle">Paste your resume and get instant expert feedback</p>
+
+        <div class="card">
+            <label>Paste your resume text below:</label>
+            <textarea id="resumeInput" placeholder="Paste your full resume here..."></textarea>
+            <button onclick="reviewResume()" id="btn">🔍 Review My Resume</button>
+        </div>
+
+        <div class="loading" id="loading">⏳ Analyzing your resume, please wait...</div>
+
+        <div class="feedback-box" id="feedbackBox">
+            <h2>📋 AI Feedback</h2>
+            <div id="feedbackText"></div>
+        </div>
+    </div>
+
+    <script>
+        async function reviewResume() {
+            const resume = document.getElementById('resumeInput').value.trim();
+            if (!resume) {
+                alert('Please paste your resume first!');
+                return;
+            }
+
+            const btn = document.getElementById('btn');
+            const loading = document.getElementById('loading');
+            const feedbackBox = document.getElementById('feedbackBox');
+            const feedbackText = document.getElementById('feedbackText');
+
+            btn.disabled = true;
+            btn.textContent = 'Analyzing...';
+            loading.style.display = 'block';
+            feedbackBox.style.display = 'none';
+
+            try {
+                const res = await fetch('http://localhost:5001/review', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ resume: resume })
+                });
+
+                const data = await res.json();
+
+                feedbackText.innerHTML = data.feedback
+                    .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+                    .replace(/### (.*?)(\n|$)/g, '<br><strong>$1</strong><br>')
+                    .replace(/\n/g, '<br>');
+
+                feedbackBox.style.display = 'block';
+
+            } catch (e) {
+                alert('Error connecting to server!');
+            }
+
+            loading.style.display = 'none';
+            btn.disabled = false;
+            btn.textContent = '🔍 Review My Resume';
+        }
+    </script>
+</body>
+</html>
