@@ -22,6 +22,12 @@ It is designed to help users improve their resumes by providing instant AI-gener
 * 💻 CSS
 * ⚡ JavaScript
 
+  ##Resume-Review Preview
+  <img width="1030" height="614" alt="resume" src="https://github.com/user-attachments/assets/7abc566c-0cd9-4191-8505-bc8c53a90db3" />
+  <img width="894" height="617" alt="resume review" src="https://github.com/user-attachments/assets/cf0da01b-b10e-46c3-bca0-45f13412c70e" />
+
+
+
 ## ⚙️ How It Works
 
 1. 📄 User enters or pastes their resume
