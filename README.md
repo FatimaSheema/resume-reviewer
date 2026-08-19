@@ -1,36 +1,73 @@
-AI Resume Reviewer 📄🤖
+# 📄 AI Resume Reviewer
 
-An AI-powered resume analysis tool that provides instant feedback and improvement suggestions using Google Gemini AI.
+AI Resume Reviewer is an AI-powered resume analysis tool built with Python and the Google Gemini API.
 
-Features
-📄 Paste your resume for analysis
-🤖 AI-powered resume feedback using Google Gemini
-📝 Feedback on resume content and structure
-💡 Suggestions for improving your resume
-🎨 Simple and clean web interface
-Tech Stack
-Python
-Flask
-Google Gemini API
-HTML
-CSS
-JavaScript
+It is designed to help users improve their resumes by providing instant AI-generated feedback on resume content, structure, and areas for improvement through a simple web interface.
 
-How to Run
-1. Clone the repository
-git clone YOUR_REPOSITORY_URL
-cd resume-reviewer
-2. Install the required packages
+## 🚀 Features
+
+* 📄 Resume text input for analysis
+* 🤖 AI-powered resume review using Google Gemini
+* 📝 Feedback on resume content and structure
+* 💡 Suggestions for improvement
+* ⚡ Instant AI-generated feedback
+* 🌐 Simple web-based interface
+
+## 🛠️ Built With
+
+* 🐍 Python
+* 🌐 Flask
+* 🤖 Google Gemini API
+* 🎨 HTML
+* 💻 CSS
+* ⚡ JavaScript
+
+## ⚙️ How It Works
+
+1. 📄 User enters or pastes their resume
+2. 🤖 Resume content is sent to Google Gemini
+3. 🔍 Gemini analyzes the resume
+4. 💡 AI generates feedback and suggestions
+5. 📋 Results are displayed through the web interface
+
+## ▶️ How to Run
+
+### 1. Install the required packages
+
+```bash
 pip install flask google-genai python-dotenv
-3. Add your Gemini API key
+```
 
-Create a .env file in the project folder and add:
+### 2. Add your Gemini API key
 
+Create a `.env` file and add:
+
+```env
 GEMINI_API_KEY=your_api_key_here
+```
 
-Important: Never upload your API key to GitHub. Make sure .env is included in your .gitignore file.
+> ⚠️ Never share or upload your API key to GitHub.
 
-4. Run the application
+### 3. Run the application
+
+```bash
 py -3.13 app.py
+```
 
-Open the local URL shown in your terminal to use the application.
+Then open the local URL shown in the terminal.
+
+## 🔮 Future Improvements
+
+* 📑 PDF resume upload
+* 📄 DOCX resume upload
+* 🎯 ATS compatibility analysis
+* 📊 Resume scoring
+* 💼 Job description matching
+* 🔑 Keyword recommendations
+* 📥 Downloadable resume analysis reports
+
+## 👩‍💻 Author
+
+**Sheema Fatima**
+
+Computer Science student interested in **Artificial Intelligence, Python, and software development**.
