@@ -48,7 +48,7 @@ pip install flask google-genai python-dotenv
 Create a `.env` file and add:
 
 ```env
-GEMINI_API_KEY=your_api_key_here
+API_KEY=your_api_key_here
 ```
 
 > ⚠️ Never share or upload your API key to GitHub.
