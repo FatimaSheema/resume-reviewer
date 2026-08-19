@@ -7,6 +7,7 @@ It is designed to help users improve their resumes by providing instant AI-gener
 ## 🚀 Features
 
 * 📄 Resume text input for analysis
+* 📄 Resume PDF input for analysis
 * 🤖 AI-powered resume review using Google Gemini
 * 📝 Feedback on resume content and structure
 * 💡 Suggestions for improvement
@@ -22,11 +23,9 @@ It is designed to help users improve their resumes by providing instant AI-gener
 * 💻 CSS
 * ⚡ JavaScript
 
-  ##Resume-Review Preview
-  <img width="1030" height="614" alt="resume" src="https://github.com/user-attachments/assets/7abc566c-0cd9-4191-8505-bc8c53a90db3" />
-  <img width="894" height="617" alt="resume review" src="https://github.com/user-attachments/assets/cf0da01b-b10e-46c3-bca0-45f13412c70e" />
-
-
+## Resume-Review Preview
+<img width="1333" height="619" alt="resume" src="https://github.com/user-attachments/assets/d1a0203d-0d62-493c-8715-9eddb12396b3" />
+<img width="863" height="607" alt="resume review" src="https://github.com/user-attachments/assets/cf695422-f2f4-4567-9c28-7b1193d44061" />
 
 ## ⚙️ How It Works
 
@@ -64,7 +63,6 @@ Then open the local URL shown in the terminal.
 
 ## 🔮 Future Improvements
 
-* 📑 PDF resume upload
 * 📄 DOCX resume upload
 * 🎯 ATS compatibility analysis
 * 📊 Resume scoring
